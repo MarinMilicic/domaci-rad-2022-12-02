@@ -35,20 +35,21 @@ switch (time) {
 // Zadatak 2. 
 // Napisi program koji omogucava unos proizvoljnog broja godina preko konzole, te napisi ternarni izraz koji bira vrijednosti MALOLJETAN i PUNOLJETAN. Potom za MALOLJETAN ispisi "Korisnik je maloljentan", a za punoljetan "Korisnik je punoljetan". Ako korisnik nije unio broj napisi "Pogresan unos!". 
 
-var age = process.argv[2]
+var age = +process.argv[2]
 
-var MALOLJETAN = age < 18
-var PUNOLJETAN = age >= 18
+var adult = age >= 18 ? "PUNOLJETAN" : "MALOLJETAN"
 
-var adult = PUNOLJETAN ? "Korisnik je punoljetan" : MALOLJETAN ? "Korisnik je maloljentan" : "Pogresan unos!"
-
-console.log(adult)
+if (isNaN(age)) {
+    console.log("Pogresan unos!")
+} else {
+    console.log(`Korisnik je ${adult.toLowerCase()}`)
+}
 
 
 // Zadatak 3.
 // Napisi program u kojem korisnik unosi broj preko konzole. Ako korisnik nije unio broj, program racuna da je korisnik unio broj 7. Program zatim ispisuje "Tvoj sretni broj je ___" i potom preko Math.random funkcije izvlaci cijeli broj od 0 do 9. Ukoliko je izvuceni broj identican korisnikovom sretnom broju ispisi "Jackpot!", a u suprotnom "Vise srece drugi put!". 
 
-var input = process.argv[2]
+var input = +process.argv[2]
 var num = isNaN(input) ? 7 : input
 console.log(`Tvoj sretni broj je ${num}`)
 
